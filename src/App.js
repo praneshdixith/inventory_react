@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import InventoryManagement from './components/Inventory/InventoryManagement';
+import MainDetailPage from './components/Inventory/MainDetailPage';
+import LoginForm from './components/LoginForm';
+import welcome from './components/welcome';
 
 function App() {
+  const isLoggedIn = false; // Example: you would get this value from your authentication logic
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Welcome
-        </a>
-      </header>
-    </div>
-  );
+    <div>
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/inventory" element={isLoggedIn ? <welcome /> : <welcome />} />
+        {/* Add other routes here */}
+        </div>
+      );
 }
 
 export default App;
+

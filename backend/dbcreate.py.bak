@@ -1,0 +1,25 @@
+import sqlite3
+
+# Connect to SQLite database file
+conn = sqlite3.connect('user_credentials.db')
+
+# Create a cursor object
+cursor = conn.cursor()
+
+# Define SQL statement to create a users table
+create_table_query = '''
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+);
+'''
+
+# Execute the SQL statement to create the table
+cursor.execute(create_table_query)
+
+# Commit changes and close connection
+conn.commit()
+conn.close()
+
+print("Database created successfully")

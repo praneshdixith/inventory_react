@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import AddItemPage from './AddItemPage';
 import SellItemPage from './SellItemPage';
 import RemoveItemPage from './RemoveItemPage';
@@ -26,20 +26,12 @@ function InventoryManagement() {
           </ul>
         </nav>
 
-        
-          <Route path="/add-item">
-            <AddItemPage />
-          </Route>
-          <Route path="/sell-item">
-            <SellItemPage />
-          </Route>
-          <Route path="/remove-item">
-            <RemoveItemPage />
-          </Route>
-          <Route path="/Main">
-            <MainDetailPage />
-          </Route>
-        
+        <Routes>
+          <Route path="/add-item" element={<AddItemPage />} />
+          <Route path="/sell-item" element={<SellItemPage />} />
+          <Route path="/remove-item" element={<RemoveItemPage />} />
+          <Route path="/Main" element={<MainDetailPage />} />
+        </Routes>
       </div>
     </Router>
   );
